@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain Consensus Algorithms — A Comparative Explorer</title>
+    <meta name="description" content="An interactive single-page educational explorer comparing major blockchain consensus algorithms (PoW, PoS, DPoS, PoH, BFT, PoA) across layers, smart contracts, Trilemma ratings, and compatibility.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="decorations">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
+    </div>
+
+    <header class="app-header">
+        <div class="header-container">
+            <div class="brand">
+                <span class="badge-tag">Interactive Guide</span>
+                <h1 id="app-title">Consensus Algorithms in Blockchain <span class="gradient-text">— A Comparative Explorer</span></h1>
+                <p class="tagline">Explore how decentralized networks agree, secure transaction blocks, and balance the Blockchain Trilemma.</p>
+            </div>
+            <div class="header-stats">
+                <div class="stat-card">
+                    <span class="stat-num" id="stat-count-algos">6</span>
+                    <span class="stat-label">Protocols Mapped</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-num" id="stat-count-chains">9</span>
+                    <span class="stat-label">Blockchains Mapped</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="app-layout">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar-panel">
+            <div class="card-header">
+                <h2><i class="fa-solid fa-layer-group"></i> Select Algorithm</h2>
+                <p>Choose an algorithm to filter and update all comparative views.</p>
+            </div>
+            <nav class="algorithm-nav" id="algo-nav-list">
+                <!-- Navigation tabs dynamically injected by JS -->
+            </nav>
+            
+            <div class="trilemma-intro-card">
+                <h3><i class="fa-solid fa-triangle-exclamation"></i> Blockchain Trilemma</h3>
+                <p>Formulated by Vitalik Buterin, the Trilemma states that a decentralized database can satisfy at most two out of three properties: <strong>Decentralization</strong>, <strong>Security</strong>, and <strong>Scalability</strong>.</p>
+                <div class="trilemma-mini-indicators">
+                    <span class="tri-ind dec"><span class="dot"></span> Decentralization</span>
+                    <span class="tri-ind sec"><span class="dot"></span> Security</span>
+                    <span class="tri-ind scal"><span class="dot"></span> Scalability</span>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Comparative Workboard -->
+        <div class="dashboard-content">
+            
+            <!-- Row 1: Overview & Trilemma Radar Chart -->
+            <div class="grid-row-2">
+                <!-- Algorithm Overview Card -->
+                <section class="dashboard-card info-card" id="card-overview">
+                    <div class="card-header-dynamic">
+                        <div class="header-title-group">
+                            <span class="algo-type-badge" id="algo-badge">Layer 1 Protocol</span>
+                            <h2 id="algo-name">Proof of Stake (PoS)</h2>
+                        </div>
+                        <div class="algo-icon" id="algo-icon-wrapper">
+                            <i class="fa-solid fa-server"></i>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="algo-description" id="algo-description">
+                            Loading details...
+                        </p>
+                        
+                        <div class="stepper-section">
+                            <h3><i class="fa-solid fa-network-wired"></i> Step-by-Step Mechanism</h3>
+                            <div class="stepper-container" id="algo-stepper">
+                                <!-- Dynamic steps will be injected here -->
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Trilemma Visual Scorecard & Radar Chart -->
+                <section class="dashboard-card chart-card" id="card-trilemma">
+                    <div class="card-header">
+                        <h2><i class="fa-solid fa-chart-pie"></i> Trilemma Balance Scorecard</h2>
+                        <p>Visual trade-off distribution based on protocol execution parameters.</p>
+                    </div>
+                    <div class="card-body trilemma-body">
+                        <div class="chart-container">
+                            <!-- Custom Interactive SVG Radar Chart -->
+                            <svg id="radar-chart" viewBox="0 0 400 400" width="100%" height="100%">
+                                <!-- Radar circles, spokes, polygon & labels injected and updated dynamically -->
+                            </svg>
+                        </div>
+                        <div class="scorecard-details">
+                            <div class="score-row" id="score-dec">
+                                <div class="score-header">
+                                    <span class="score-label"><i class="fa-solid fa-users"></i> Decentralization</span>
+                                    <span class="score-val" id="score-dec-val">0/100</span>
+                                </div>
+                                <div class="progress-bar-bg"><div class="progress-bar-fill fill-dec" style="width: 0%"></div></div>
+                                <p class="score-desc" id="score-dec-desc">...</p>
+                            </div>
+                            <div class="score-row" id="score-sec">
+                                <div class="score-header">
+                                    <span class="score-label"><i class="fa-solid fa-shield-halved"></i> Security</span>
+                                    <span class="score-val" id="score-sec-val">0/100</span>
+                                </div>
+                                <div class="progress-bar-bg"><div class="progress-bar-fill fill-sec" style="width: 0%"></div></div>
+                                <p class="score-desc" id="score-sec-desc">...</p>
+                            </div>
+                            <div class="score-row" id="score-scal">
+                                <div class="score-header">
+                                    <span class="score-label"><i class="fa-solid fa-gauge-high"></i> Scalability</span>
+                                    <span class="score-val" id="score-scal-val">0/100</span>
+                                </div>
+                                <div class="progress-bar-bg"><div class="progress-bar-fill fill-scal" style="width: 0%"></div></div>
+                                <p class="score-desc" id="score-scal-desc">...</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Row 2: Mapping, Smart Contracts & Layer Classification -->
+            <section class="dashboard-card mapping-card" id="card-mappings">
+                <div class="card-header">
+                    <h2><i class="fa-solid fa-link"></i> Real-World Blockchain Implementations</h2>
+                    <p>Blockchains utilizing the selected consensus and their developer ecosystems.</p>
+                </div>
+                <div class="card-body">
+                    <div class="mapping-grid" id="blockchain-mapping-list">
+                        <!-- Dynamic blockchain items with smart contract language and layer info -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Row 3: Interactive Compatibility Heatmap -->
+            <section class="dashboard-card matrix-card" id="card-matrix">
+                <div class="card-header">
+                    <h2><i class="fa-solid fa-circle-nodes"></i> Protocol Compatibility & Interoperability Matrix</h2>
+                    <p>Examine cross-chain communication rules. Tap any cell to view compatibility reports.</p>
+                </div>
+                <div class="card-body matrix-layout">
+                    <div class="matrix-scroll-wrapper">
+                        <table class="compatibility-table" id="compatibility-matrix-table">
+                            <!-- Dynamically generated 2D table -->
+                        </table>
+                    </div>
+                    <div class="interop-details-panel" id="interop-details">
+                        <div class="empty-state-text" id="interop-empty-state">
+                            <i class="fa-solid fa-circle-info"></i>
+                            <p>Select any cell in the compatibility grid to view interoperability details and bridge logic between the target networks.</p>
+                        </div>
+                        <div class="interop-content hidden" id="interop-content">
+                            <div class="interop-title-row">
+                                <span class="badge" id="interop-status-badge">Compatible</span>
+                                <h3 id="interop-pair-title">Bitcoin &rarr; Ethereum</h3>
+                            </div>
+                            <div class="interop-summary">
+                                <strong>Consensus Rule:</strong> <span id="interop-rules">PoW vs PoS</span>
+                            </div>
+                            <div class="interop-description">
+                                <p id="interop-description-text">...</p>
+                            </div>
+                            <div class="interop-bridge-guide">
+                                <h4><i class="fa-solid fa-bridge"></i> Bridging Technology</h4>
+                                <p id="interop-bridge-text">...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="app-footer-bar">
+        <p>&copy; 2026 Consensus Explorer. Designed for interactive blockchain pedagogy. Single Page Application.</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
